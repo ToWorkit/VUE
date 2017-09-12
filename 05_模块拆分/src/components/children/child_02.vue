@@ -1,0 +1,21 @@
+<template>
+  <div class="sub-contatiner2">
+    <h2>兄弟组件_02</h2>
+    <div>兄弟组件_01传递过来的数据</div>
+    <div class="attention">{{score}}</div>
+    <div class="attention">{{price}}</div>
+  </div>
+</template>
+<script>
+  export default {
+    name: 'child_02',
+    computed: {
+      score () {
+        return this.$store.state.score.score
+      },
+      price () {
+        return this.$store.state.price.price
+      }
+    }
+  }
+</script>
