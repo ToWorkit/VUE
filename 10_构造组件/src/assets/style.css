@@ -1,0 +1,9 @@
+.vue-toast {
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  background: #000;
+  margin: 0 auto;
+}

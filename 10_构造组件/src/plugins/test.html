@@ -1,0 +1,50 @@
+<!--
+http://mp.weixin.qq.com/s?__biz=MzIzMTU4MzMzOQ==&mid=2247485437&idx=1&sn=f1cde6632e7c22da7067fb1028a30f96&chksm=e8a0bcf9dfd735ef5e68e36793c4d93032fb08659e6f1d368a4a6a8ce32e36cba52bfdf87721&mpshare=1&scene=23&srcid=09207S19PeFFLLtxNeCiutbD#rd
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VUE的构造器原理</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- 3. 实例挂载元素，范围指定#app内 -->
+    <my-component></my-component>
+  </div>
+  <script>
+    // 1. 创建一个组件构造器
+    let myComponent = Vue.extend({
+      template: '<div>组件_02</div>'
+    })
+    /*方式一*/
+/*    // 2. 注册组件，并指定组件的标签，组件的HTML标签为 <my-component>
+    Vue.component('my-component', myComponent)
+    // 3. 实例化
+    let vueObj = new Vue({
+      el: '#app'
+    })*/
+    /*方式二*/
+    let vueObj = new Vue({
+      components: {
+        'my-component': myComponent
+      }
+    }).$mount('#app')
+    /**
+     * 1. 创造组件构造器  Vue.extend()
+     * 2. 注册组件  Vue.component
+     * 3. 指定挂载范围 el
+     */
+    /*
+    注意
+      1. Vue.extend()是Vue构造器的扩展，调用Vue.extend()创建的是一个组件构造器，而不是一个具体的组件实例。
+      2. Vue.extend()构造器有一个options选项对象，options对象的template属性用于定义组件要渲染的HTML。
+      3. 使用Vue.component()注册组件时，需要提供2个参数。第1个参数时组件的标签，第2个参数是组件构造器。
+      4. Vue.component()方法内部会调用组件构造器，创建一个组件实例。
+      5. 组件应该挂载到某个Vue实例下，否则它不会生效。
+     */
+    console.log(vueObj.$el)
+  </script>
+</body>
+</html>
